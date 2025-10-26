@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alimentación Saludable - Unidad Educativa Antofagasta</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header y navegación - COLOR AZUL */
+        header {
+            background-color: #1a5276;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            border: 2px solid #ff9800;
+            overflow: hidden;
+        }
+        
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.3rem;
+            line-height: 1.2;
+        }
+        
+        .logo-text .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .developer-name {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-top: 2px;
+            font-style: italic;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            display: block;
+        }
+        
+        nav ul li a:hover {
+            color: #aed6f1;
+        }
+        
+        /* Dropdown styles */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+            top: 100%;
+            left: 0;
+        }
+        
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #e8f5e9;
+            color: #1a5276;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ff9800;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #f57c00;
+        }
+        
+        /* Secciones */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #1a5276;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background-color: #ff9800;
+        }
+        
+        /* Acerca de */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+            text-align: justify;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Grupos de alimentos */
+        .food-groups {
+            background-color: #e8f5e9;
+        }
+        
+        .food-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .food-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .food-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .food-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .food-card-content {
+            padding: 20px;
+        }
+        
+        .food-card h3 {
+            color: #1a5276;
+            margin-bottom: 10px;
+        }
+        
+        /* Consejos */
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .tip {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .tip-icon {
+            font-size: 3rem;
+            color: #ff9800;
+            margin-bottom: 20px;
+        }
+        
+        /* Recetas */
+        .recipes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .recipe {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .recipe:hover {
+            transform: scale(1.03);
+        }
+        
+        .recipe img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .recipe-content {
+            padding: 20px;
+        }
+        
+        .recipe h3 {
+            color: #1a5276;
+            margin-bottom: 10px;
+        }
+        
+        /* Nueva sección: Beneficios */
+        .benefits {
+            background-color: #f5f5f5;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            color: #1a5276;
+            margin-bottom: 20px;
+        }
+        
+        /* Galería de imágenes */
+        .gallery {
+            background-color: #f5f5f5;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 200px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Secciones adicionales para dropdowns */
+        .mission-vision {
+            background-color: #e8f5e9;
+        }
+        
+        .mission-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .mission-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: justify;
+        }
+        
+        .food-detail {
+            background-color: #f5f5f5;
+        }
+        
+        .food-detail-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .food-detail-text {
+            flex: 1;
+            text-align: justify;
+        }
+        
+        .food-detail-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .food-detail-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .recipe-category {
+            background-color: #e8f5e9;
+        }
+        
+        .recipe-category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* QR Code Section */
+        .qr-section {
+            background-color: #e8f5e9;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .qr-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .qr-text {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #154360;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #ff9800;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #c8e6c9;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: #ff9800;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Botón volver arriba */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #ff9800;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 99;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .about-content, .food-detail-content {
+                flex-direction: column;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                background-color: transparent;
+            }
+            
+            .dropdown-content a {
+                color: white;
+                padding: 8px 0;
+                border-bottom: none;
+            }
+            
+            .dropdown-content a:hover {
+                background-color: transparent;
+                color: #aed6f1;
+            }
+
+            .developer-name {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-img">
+                        <!-- Escudo de la Unidad Educativa -->
+                        <img src="https://i.ibb.co/PzxPTRkZ/logo-colegio.jpg" alt="Escudo Unidad Educativa Antofagasta">
+                    </div>
+                    <div class="logo-text">
+                        <h1>UNIDAD EDUCATIVA ANTOFAGASTA</h1>
+                        <div class="subtitle">Alimentación Saludable - Tupiza, Bolivia</div>
+                        <div class="developer-name">Desarrollado por: Matias Sebastian Rivero Camata</div>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li class="dropdown">
+                            <a href="#acerca">Acerca</a>
+                            <div class="dropdown-content">
+                                <a href="#acerca">Nuestro Propósito</a>
+                                <a href="#mision">Misión y Visión</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#grupos">Grupos de Alimentos</a>
+                            <div class="dropdown-content">
+                                <a href="#frutas-verduras">Frutas y Verduras</a>
+                                <a href="#cereales">Cereales y Granos</a>
+                                <a href="#proteinas">Proteínas</a>
+                                <a href="#lacteos">Lácteos</a>
+                            </div>
+                        </li>
+                        <li><a href="#consejos">Consejos</a></li>
+                        <li class="dropdown">
+                            <a href="#recetas">Recetas</a>
+                            <div class="dropdown-content">
+                                <a href="#desayunos">Desayunos Saludables</a>
+                                <a href="#almuerzos">Almuerzos Nutritivos</a>
+                                <a href="#cenas">Cenas Ligeras</a>
+                                <a href="#postres">Postres Saludables</a>
+                            </div>
+                        </li>
+                        <li><a href="#beneficios">Beneficios</a></li>
+                        <li><a href="#galeria">Galería</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h2>Promoviendo una Alimentación Saludable</h2>
+            <p>Unidad Educativa Antofagasta de Tupiza te invita a descubrir cómo mejorar tus hábitos alimenticios con información confiable, recetas saludables y consejos prácticos para tu día a día.</p>
+            <a href="#acerca" class="btn">Conoce Más</a>
+        </div>
+    </section>
+
+    <!-- Acerca de -->
+    <section id="acerca">
+        <div class="container">
+            <div class="section-title">
+                <h2>Acerca del Proyecto</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Este proyecto de la Unidad Educativa Antofagasta tiene como propósito impulsar una cultura alimentaria basada en la conciencia, el aprendizaje y la participación, promoviendo el consumo de alimentos naturales, frescos y nutritivos dentro de nuestro entorno escolar y familiar en la ciudad de Tupiza.</p>
+                    <p>Mediante el diseño y desarrollo de esta página web, buscamos informar, motivar y acompañar a estudiantes, padres y docentes en la adopción de hábitos alimenticios más conscientes, utilizando la tecnología como aliada para la educación nutricional.</p>
+                    <p>Nuestro enfoque es positivo, resaltando lo beneficioso de alimentarse bien, más que lo negativo de los malos hábitos. Creemos firmemente que pequeños cambios en la alimentación pueden generar grandes beneficios en la salud y rendimiento académico de nuestros estudiantes.</p>
+                    <p>Además, trabajamos en colaboración con la comunidad educativa, centros de salud y productores locales para fomentar el consumo de alimentos producidos en nuestra región, apoyando así la economía local y reduciendo la huella ecológica.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Alimentación saludable">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Misión y Visión -->
+    <section class="mission-vision" id="mision">
+        <div class="container">
+            <div class="section-title">
+                <h2>Misión y Visión</h2>
+            </div>
+            <div class="mission-content">
+                <div class="mission-card">
+                    <h3>Nuestra Misión</h3>
+                    <p>Promover y fomentar hábitos alimenticios saludables en la comunidad educativa de la Unidad Educativa Antofagasta a través de la educación nutricional, el acceso a información veraz y la creación de espacios de participación que permitan a las familias adoptar estilos de vida más saludables.</p>
+                    <p>Trabajamos para empoderar a estudiantes, padres y docentes con conocimientos prácticos sobre alimentación balanceada, aprovechando los recursos locales y respetando las tradiciones culinarias de nuestra región.</p>
+                </div>
+                <div class="mission-card">
+                    <h3>Nuestra Visión</h3>
+                    <p>Ser el referente principal en educación alimentaria en nuestra institución educativa, contribuyendo a la reducción de problemas de salud relacionados con la mala nutrición y formando una comunidad consciente de la importancia de una alimentación balanceada para el bienestar integral y el rendimiento académico.</p>
+                    <p>Aspiramos a que para el 2030, el 80% de las familias de nuestra comunidad educativa hayan incorporado al menos tres prácticas alimentarias saludables en su día a día, mejorando así su calidad de vida y la de las generaciones futuras.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grupos de alimentos -->
+    <section class="food-groups" id="grupos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Grupos de Alimentos</h2>
+            </div>
+            <div class="food-cards">
+                <div class="food-card">
+                    <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Frutas y verduras">
+                    <div class="food-card-content">
+                        <h3>Frutas y Verduras</h3>
+                        <p>Fuente principal de vitaminas, minerales y fibra. Se recomienda consumir al menos 5 porciones al día de diferentes colores. Las frutas y verduras de temporada no solo son más económicas, sino que también ofrecen un mejor sabor y mayor valor nutricional.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cereales y granos">
+                    <div class="food-card-content">
+                        <h3>Cereales y Granos</h3>
+                        <p>Proporcionan energía, fibra y nutrientes esenciales. Prefiere los integrales sobre los refinados. Los cereales integrales como la quinua, avena y arroz integral contienen más fibra, vitaminas y minerales que sus versiones refinadas, ayudando a mantener estable el nivel de azúcar en sangre.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <img src="https://images.unsplash.com/photo-1604503468506-a8da13d82791?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Proteínas - Carne">
+                    <div class="food-card-content">
+                        <h3>Proteínas</h3>
+                        <p>Esenciales para el crecimiento, desarrollo y reparación de tejidos. Incluye carnes magras, pescado, huevos, legumbres y frutos secos. Las proteínas de origen vegetal como las legumbres son una excelente alternativa, ya que además de proteínas aportan fibra y otros nutrientes beneficiosos para la salud.</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <img src="https://images.unsplash.com/photo-1552767059-ce182ead6c1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Quesos variados">
+                    <div class="food-card-content">
+                        <h3>Lácteos</h3>
+                        <p>Fuente importante de calcio para huesos y dientes. Opta por versiones bajas en grasa cuando sea posible. Los productos lácteos fermentados como el yogur contienen probióticos que favorecen la salud intestinal. Si eres intolerante a la lactosa, existen alternativas vegetales enriquecidas con calcio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detalles de grupos alimenticios -->
+    <section class="food-detail" id="frutas-verduras">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frutas y Verduras</h2>
+            </div>
+            <div class="food-detail-content">
+                <div class="food-detail-text">
+                    <h3>Importancia en la alimentación</h3>
+                    <p>Las frutas y verduras son fundamentales para una alimentación saludable. Proporcionan vitaminas esenciales como la A, C y K, minerales como el potasio y el magnesio, y fibra dietética que favorece la digestión y previene el estreñimiento.</p>
+                    <p>Se recomienda consumir al menos 5 porciones al día de diferentes colores, ya que cada color representa distintos fitoquímicos beneficiosos para la salud. Por ejemplo, las frutas y verduras rojas contienen licopeno, las verdes son ricas en clorofila, y las naranjas/amarillas son fuente de betacaroteno.</p>
+                    <p>En Tupiza, podemos aprovechar frutas de temporada como duraznos, uvas y ciruelas, así como verduras locales como la zanahoria, cebolla, papa y una variedad de hortalizas que crecen en nuestra región.</p>
+                </div>
+                <div class="food-detail-image">
+                    <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Frutas y verduras">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="food-detail" id="cereales">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cereales y Granos</h2>
+            </div>
+            <div class="food-detail-content">
+                <div class="food-detail-image">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cereales y granos">
+                </div>
+                <div class="food-detail-text">
+                    <h3>Energía para el día a día</h3>
+                    <p>Los cereales y granos son la principal fuente de energía para nuestro organismo. Proporcionan carbohidratos complejos que se absorben lentamente, manteniendo estables los niveles de azúcar en sangre y proporcionando energía sostenida.</p>
+                    <p>Los cereales integrales como la quinua, avena, arroz integral y trigo contienen más fibra, vitaminas del complejo B y minerales como hierro, magnesio y zinc que sus versiones refinadas. La fibra ayuda a regular el tránsito intestinal y contribuye a la sensación de saciedad.</p>
+                    <p>En nuestra región, la quinua es un superalimento andino de alto valor nutricional, rico en proteínas completas y sin gluten. Incorporarla en nuestra alimentación diaria es una excelente manera de aprovechar los recursos locales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="food-detail" id="proteinas">
+        <div class="container">
+            <div class="section-title">
+                <h2>Proteínas</h2>
+            </div>
+            <div class="food-detail-content">
+                <div class="food-detail-text">
+                    <h3>Construcción y reparación corporal</h3>
+                    <p>Las proteínas son nutrientes esenciales para el crecimiento, desarrollo y mantenimiento de todos los tejidos del cuerpo. Son especialmente importantes durante la infancia y adolescencia, etapas de rápido crecimiento.</p>
+                    <p>Existen proteínas de origen animal (carnes, pescados, huevos, lácteos) y vegetal (legumbres, frutos secos, semillas). Las proteínas animales son completas, mientras que las vegetales pueden combinarse (como arroz con lentejas) para obtener todos los aminoácidos esenciales.</p>
+                    <p>En nuestra alimentación diaria, es importante incluir fuentes magras de proteínas y variar entre diferentes tipos. El pescado, especialmente el azul, aporta ácidos grasos omega-3 beneficiosos para la salud cardiovascular y cerebral.</p>
+                </div>
+                <div class="food-detail-image">
+                    <img src="https://images.unsplash.com/photo-1604503468506-a8da13d82791?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Proteínas - Carne">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="food-detail" id="lacteos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lácteos</h2>
+            </div>
+            <div class="food-detail-content">
+                <div class="food-detail-image">
+                    <img src="https://images.unsplash.com/photo-1552767059-ce182ead6c1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Quesos variados">
+                </div>
+                <div class="food-detail-text">
+                    <h3>Salud ósea y más</h3>
+                    <p>Los productos lácteos son la principal fuente de calcio en nuestra alimentación, mineral esencial para la formación y mantenimiento de huesos y dientes fuertes. También aportan proteínas de alta calidad, vitaminas A, D y B12.</p>
+                    <p>Los lácteos fermentados como el yogur y el kéfir contienen probióticos que favorecen la salud intestinal y fortalecen el sistema inmunológico. Para quienes son intolerantes a la lactosa, existen opciones sin lactosa o alternativas vegetales enriquecidas con calcio.</p>
+                    <p>Se recomienda elegir versiones bajas en grasa de los lácteos, especialmente en personas con necesidades de control de peso o colesterol. Incorporar lácteos en la alimentación diaria contribuye a una dieta equilibrada y nutritiva.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consejos -->
+    <section id="consejos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Consejos para una Alimentación Saludable</h2>
+            </div>
+            <div class="tips-container">
+                <div class="tip">
+                    <div class="tip-icon">🥗</div>
+                    <h3>Variedad en tu dieta</h3>
+                    <p>Incluye alimentos de todos los grupos en tus comidas diarias para obtener todos los nutrientes que necesitas. Experimenta con nuevas frutas, verduras y granos para mantener tu alimentación interesante y nutritiva.</p>
+                </div>
+                <div class="tip">
+                    <div class="tip-icon">💧</div>
+                    <h3>Hidratación adecuada</h3>
+                    <p>Bebe al menos 8 vasos de agua al día. El agua es esencial para todas las funciones del cuerpo. Puedes incluir infusiones de hierbas o aguas saborizadas naturalmente con frutas para variar.</p>
+                </div>
+                <div class="tip">
+                    <div class="tip-icon">⏰</div>
+                    <h3>Horarios regulares</h3>
+                    <p>Establece horarios fijos para tus comidas principales y evita saltarte el desayuno. Comer a intervalos regulares ayuda a mantener estables los niveles de energía y evita los atracones.</p>
+                </div>
+                <div class="tip">
+                    <div class="tip-icon">🚫</div>
+                    <h3>Reduce procesados</h3>
+                    <p>Limita el consumo de alimentos ultraprocesados, altos en azúcares, grasas saturadas y sodio. Prepara tus comidas en casa siempre que sea posible para controlar los ingredientes.</p>
+                </div>
+                <div class="tip">
+                    <div class="tip-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Comparte en familia</h3>
+                    <p>Las comidas en familia promueven hábitos alimenticios más saludables y fortalecen vínculos. Involucra a los niños en la preparación de alimentos para fomentar su interés por la comida saludable.</p>
+                </div>
+                <div class="tip">
+                    <div class="tip-icon">🛒</div>
+                    <h3>Compra consciente</h3>
+                    <p>Planifica tus compras, lee las etiquetas nutricionales y prioriza alimentos frescos y naturales. Visita mercados locales donde puedas encontrar productos de temporada a mejor precio.</p>
+                </div>
+                <div class="tip">
+                    <div class="tip-icon">🍽️</div>
+                    <h3>Porciones adecuadas</h3>
+                    <p>Aprende a reconocer las porciones adecuadas para tu cuerpo. Usa platos más pequeños para controlar mejor las cantidades y evita comer directamente del empaque.</p>
+                </div>
+                <div class="tip">
+                    <div class="tip-icon">🚶‍♂️</div>
+                    <h3>Combina con ejercicio</h3>
+                    <p>Una alimentación saludable se complementa con actividad física regular. Encuentra una actividad que disfrutes y practícala al menos 30 minutos al día.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recetas por categorías - Desayunos -->
+    <section class="recipe-category" id="desayunos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Desayunos Saludables</h2>
+            </div>
+            <div class="recipe-category-grid">
+                <div class="recipe">
+                    <img src="https://i.ibb.co/KxZv5Ghc/batido-verde.jpg" alt="Batido verde energético">
+                    <div class="recipe-content">
+                        <h3>Batido Verde Energético</h3>
+                        <p>Mezcla 1 plátano, 1 taza de espinacas frescas, 1/2 taza de avena, 1 cucharada de semillas de chía, 1 taza de leche de almendras y 1 cucharadita de miel. Licúa hasta obtener una textura suave. Rico en fibra, vitaminas y energía sostenida.</p>
+                    </div>
+                </div>
+                <div class="recipe">
+                    <img src="https://i.ibb.co/mVR7vBc0/avena-nocturna.jpg" alt="Avena con frutos rojos">
+                    <div class="recipe-content">
+                        <h3>Avena Nocturna con Frutos Rojos</h3>
+                        <p>Combina 1/2 taza de avena, 1 taza de leche vegetal, 1 cucharada de semillas de linaza y 1 cucharadita de miel en un frasco. Refrigera toda la noche. Por la mañana, añade frutos rojos frescos y nueces. Listo para llevar.</p>
+                    </div>
+                </div>
+                <div class="recipe">
+                    <img src="https://i.ibb.co/wFvmqS0r/tostadas-integrales.jpg" alt="Tostadas integrales">
+                    <div class="recipe-content">
+                        <h3>Tostadas Integrales con Aguacate</h3>
+                        <p>Tuesta 2 rebanadas de pan integral. Mientras, tritura 1/2 aguacate con jugo de limón, sal y pimienta. Unta sobre el pan y decora con tomate en rodajas y semillas de sésamo. Fuente de grasas saludables y fibra.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recetas por categorías - Almuerzos -->
+    <section class="recipe-category" id="almuerzos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Almuerzos Nutritivos</h2>
+            </div>
+            <div class="recipe-category-grid">
+                <div class="recipe">
+                    <img src="https://i.ibb.co/39PZRrvx/ensalada-quinoa.jpg" alt="Ensalada de quinoa">
+                    <div class="recipe-content">
+                        <h3>Ensalada de Quinoa Mediterránea</h3>
+                        <p>Cocina 1 taza de quinoa. Mezcla con pepino, tomate cherry, aceitunas, cebolla morada y queso feta. Aliña con aceite de oliva, limón y hierbas provenzales. Una comida completa llena de proteínas y nutrientes.</p>
+                    </div>
+                </div>
+                <div class="recipe">
+                    <img src="https://i.ibb.co/6ccBRQS3/wrap-pollo.jpg" alt="Wrap saludable">
+                    <div class="recipe-content">
+                        <h3>Wrap de Pollo y Verduras</h3>
+                        <p>En una tortilla integral, coloca pechuga de pollo a la plancha, lechuga, tomate, aguacate y zanahoria rallada. Añade una cucharada de hummus y enrolla. Perfecto para llevar al trabajo o escuela.</p>
+                    </div>
+                </div>
+                <div class="recipe">
+                    <img src="https://i.ibb.co/7NnwwzTR/sopa-lentejas.jpg" alt="Sopa de lentejas">
+                    <div class="recipe-content">
+                        <h3>Sopa de Lentejas y Verduras</h3>
+                        <p>Sofríe cebolla, ajo, zanahoria y apio. Añade lentejas lavadas, caldo de verduras y hierbas. Cocina hasta que las lentejas estén tiernas. Rico en proteínas vegetales, fibra y hierro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recetas por categorías - Cenas -->
+    <section class="recipe-category" id="cenas">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cenas Ligeras</h2>
+            </div>
+            <div class="recipe-category-grid">
+                <div class="recipe">
+                    <img src="https://i.ibb.co/gFJgWgcq/ensalada-salmon.jpg" alt="Ensalada de salmón">
+                    <div class="recipe-content">
+                        <h3>Ensalada de Salmón a la Plancha</h3>
+                        <p>Cocina un filete de salmón a la plancha. Sirve sobre lechuga mezclada con espinacas, pepino, aguacate y germinados. Aliña con vinagreta de limón. Fuente de omega-3 y proteínas de alta calidad.</p>
+                    </div>
+                </div>
+                <div class="recipe">
+                    <img src="https://i.ibb.co/Tx5Q7M0D/crema-calabacin.jpg" alt="Crema de calabacín">
+                    <div class="recipe-content">
+                        <h3>Crema de Calabacín</h3>
+                        <p>Sofríe cebolla y ajo. Añade calabacín en cubos y caldo de verduras. Cocina hasta que esté tierno, luego licúa. Añade un chorrito de leche de coco y sirve con semillas de calabaza tostadas.</p>
+                    </div>
+                </div>
+                <div class="recipe">
+                    <img src="https://i.ibb.co/s92vjLTX/tortilla-espinacas.jpg" alt="Tortilla de espinacas">
+                    <div class="recipe-content">
+                        <h3>Tortilla de Espinacas y Champiñones</h3>
+                        <p>Saltea espinacas y champiñones. Mezcla con 3 huevos batidos y cocina en sartén antiadherente. Añade un poco de queso feta desmenuzado. Una cena ligera pero nutritiva.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recetas por categorías - Postres -->
+    <section class="recipe-category" id="postres">
+        <div class="container">
+            <div class="section-title">
+                <h2>Postres Saludables</h2>
+            </div>
+            <div class="recipe-category-grid">
+                <div class="recipe">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Brownie de chocolate">
+                    <div class="recipe-content">
+                        <h3>Brownie de Chocolate sin Azúcar</h3>
+                        <p>Mezcla 2 plátanos maduros, 1/2 taza de cacao en polvo, 1/4 taza de mantequilla de maní y 1 cucharadita de esencia de vainilla. Hornea a 180°C por 20 minutos. Endulzado naturalmente con fruta.</p>
+                    </div>
+                </div>
+                <div class="recipe">
+                    <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Yogur con frutos rojos">
+                    <div class="recipe-content">
+                        <h3>Yogur con Frutos Rojos y Granola</h3>
+                        <p>En un frasco, coloca capas de yogur griego natural, frutos rojos frescos y granola casera. Endulza ligeramente con miel. Un postre rápido, nutritivo y delicioso.</p>
+                    </div>
+                </div>
+                <div class="recipe">
+                    <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Helado de plátano">
+                    <div class="recipe-content">
+                        <h3>Helado de Plátano</h3>
+                        <p>Congela plátanos maduros en rodajas. Procesa en licuadora hasta obtener una textura cremosa. Puedes añadir cacao en polvo, frutos secos o frutas congeladas. Sin azúcar añadido.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nueva sección: Beneficios -->
+    <section class="benefits" id="beneficios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Beneficios de una Alimentación Saludable</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">💪</div>
+                    <h3>Mayor Energía</h3>
+                    <p>Una alimentación equilibrada proporciona la energía necesaria para realizar tus actividades diarias con vitalidad y evitar la fatiga.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>Sistema Inmunológico Fortalecido</h3>
+                    <p>Los nutrientes adecuados fortalecen tus defensas naturales, ayudando a prevenir enfermedades e infecciones.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🧠</div>
+                    <h3>Mejor Función Cerebral</h3>
+                    <p>Una dieta rica en omega-3, antioxidantes y vitaminas mejora la concentración, memoria y función cognitiva.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">❤️</div>
+                    <h3>Salud Cardiovascular</h3>
+                    <p>Reducir el consumo de grasas saturadas y sodio, mientras aumentas la fibra, ayuda a mantener un corazón sano.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚖️</div>
+                    <h3>Peso Saludable</h3>
+                    <p>Comer de forma equilibrada y en porciones adecuadas facilita mantener un peso corporal saludable.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">😊</div>
+                    <h3>Mejor Estado de Ánimo</h3>
+                    <p>Existe una conexión directa entre lo que comemos y cómo nos sentimos. Una dieta saludable contribuye al bienestar emocional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nueva sección: Galería -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galería de Alimentos Saludables</h2>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Ensalada colorida">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Bowl saludable con aguacate y huevo">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Granos y semillas">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Preparación de alimentos">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Batidos saludables">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Verduras frescas">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sopa nutritiva">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Familia comiendo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección QR Code -->
+    <section class="qr-section" id="qr">
+        <div class="container">
+            <div class="section-title">
+                <h2>Comparte Nuestro Proyecto</h2>
+            </div>
+            <div class="qr-container">
+                <div class="qr-code">
+                    <!-- QR Code generado para esta página -->
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://unidad-educativa-antofagasta-alimentacion-saludable.netlify.app" alt="Código QR para compartir esta página">
+                </div>
+                <div class="qr-text">
+                    <p>Escanea este código QR con tu teléfono para acceder rápidamente a nuestra página web de alimentación saludable y compartirla con tu familia y amigos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Unidad Educativa Antofagasta</h3>
+                    <p>Proyecto educativo para promover hábitos alimenticios saludables en nuestra comunidad educativa de Tupiza, Bolivia. Trabajamos para crear conciencia sobre la importancia de la nutrición y fomentar el consumo de alimentos locales y nutritivos.</p>
+                    <div class="social-icons">
+                        <a href="#"><i>f</i></a>
+                        <a href="#"><i>in</i></a>
+                        <a href="#"><i>ig</i></a>
+                        <a href="#"><i>yt</i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#acerca">Acerca del Proyecto</a></li>
+                        <li><a href="#grupos">Grupos de Alimentos</a></li>
+                        <li><a href="#consejos">Consejos</a></li>
+                        <li><a href="#recetas">Recetas</a></li>
+                        <li><a href="#beneficios">Beneficios</a></li>
+                        <li><a href="#galeria">Galería</a></li>
+                        <li><a href="#qr">Compartir</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li>Email: alimentacionsaludablecolegioantofagasta@gmail.com</li>
+                        <li>Teléfono: +591 72382923</li>
+                        <li>Dirección: Avenida Santa Cruz y calle Coronel Arandia, Tupiza, Bolivia</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Unidad Educativa Antofagasta - Tupiza, Bolivia. Todos los derechos reservados.</p>
+                <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">Desarrollado por: Matias Sebastian Rivero Camata</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón volver arriba -->
+    <a href="#inicio" class="back-to-top" id="backToTop">↑</a>
+
+    <script>
+        // Script para el botón "volver arriba"
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        // Smooth scroll para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
