@@ -89,27 +89,95 @@
             font-style: italic;
         }
         
-        nav ul {
+        /* Navegación Desktop */
+        .desktop-nav {
+            display: flex;
+        }
+        
+        .desktop-nav ul {
             display: flex;
             list-style: none;
         }
         
-        nav ul li {
+        .desktop-nav ul li {
             margin-left: 20px;
             position: relative;
         }
         
-        nav ul li a {
+        .desktop-nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
             padding: 5px 0;
             display: block;
+            font-size: 0.95rem;
         }
         
-        nav ul li a:hover {
+        .desktop-nav ul li a:hover {
             color: #aed6f1;
+        }
+        
+        /* Menú Hamburguesa - Solo móvil */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #1a5276;
+            z-index: 1000;
+            padding: 80px 20px 20px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-nav.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+        }
+        
+        .mobile-nav ul li {
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .mobile-nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 12px 0;
+            display: block;
+            transition: color 0.3s;
+        }
+        
+        .mobile-nav ul li a:hover {
+            color: #ff9800;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
         
         /* Dropdown styles */
@@ -132,6 +200,7 @@
             text-decoration: none;
             display: block;
             border-bottom: 1px solid #f1f1f1;
+            font-size: 0.9rem;
         }
         
         .dropdown-content a:hover {
@@ -173,6 +242,7 @@
             text-decoration: none;
             font-weight: bold;
             transition: background-color 0.3s;
+            font-size: 1rem;
         }
         
         .btn:hover {
@@ -269,6 +339,7 @@
         .food-card h3 {
             color: #1a5276;
             margin-bottom: 10px;
+            font-size: 1.3rem;
         }
         
         /* Consejos */
@@ -324,6 +395,7 @@
         .recipe h3 {
             color: #1a5276;
             margin-bottom: 10px;
+            font-size: 1.3rem;
         }
         
         /* Nueva sección: Beneficios */
@@ -490,6 +562,7 @@
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
+            font-size: 1.3rem;
         }
         
         .footer-section h3::after {
@@ -514,6 +587,7 @@
             color: #c8e6c9;
             text-decoration: none;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
         
         .footer-section ul li a:hover {
@@ -536,6 +610,7 @@
             align-items: center;
             justify-content: center;
             transition: background-color 0.3s;
+            font-size: 1rem;
         }
         
         .social-icons a:hover {
@@ -566,60 +641,233 @@
             opacity: 0;
             transition: opacity 0.3s;
             z-index: 99;
+            font-size: 1.2rem;
         }
         
         .back-to-top.visible {
             opacity: 1;
         }
         
-        /* Responsive */
+        /* =========================== */
+        /* RESPONSIVE DESIGN MEJORADO */
+        /* =========================== */
+        
+        /* Tablets */
+        @media (max-width: 1024px) {
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+        
+        /* Móviles */
         @media (max-width: 768px) {
+            /* Header y navegación */
             .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 20px;
                 flex-wrap: wrap;
-                justify-content: center;
             }
             
-            nav ul li {
-                margin: 5px 10px;
+            .desktop-nav {
+                display: none;
             }
             
-            .about-content, .food-detail-content {
-                flex-direction: column;
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .mobile-nav {
+                display: block;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.1rem;
+            }
+            
+            .logo-text .subtitle {
+                font-size: 0.8rem;
+            }
+            
+            .developer-name {
+                font-size: 0.7rem;
+            }
+            
+            /* Hero Section */
+            .hero {
+                padding: 80px 0;
             }
             
             .hero h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                margin-bottom: 15px;
             }
             
             .hero p {
                 font-size: 1rem;
+                margin-bottom: 25px;
             }
             
+            .btn {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            /* Secciones */
+            section {
+                padding: 50px 0;
+            }
+            
+            .section-title {
+                margin-bottom: 30px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            /* Layouts flexibles */
+            .about-content, .food-detail-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            /* Grids */
+            .food-cards,
+            .tips-container,
+            .recipes-container,
+            .benefits-grid,
+            .mission-content,
+            .recipe-category-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+            
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            /* Cards y elementos */
+            .food-card,
+            .tip,
+            .recipe,
+            .benefit-item,
+            .mission-card {
+                padding: 20px;
+            }
+            
+            .food-card h3,
+            .recipe h3 {
+                font-size: 1.2rem;
+            }
+            
+            .tip-icon,
+            .benefit-icon {
+                font-size: 2.5rem;
+            }
+            
+            /* Botón volver arriba */
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1.1rem;
+            }
+            
+            /* QR Code */
+            .qr-code {
+                width: 180px;
+                height: 180px;
+            }
+        }
+        
+        /* Móviles pequeños */
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.4rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                height: 150px;
+            }
+            
+            .container {
+                width: 95%;
+                padding: 0 10px;
+            }
+            
+            .logo-img {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .food-card img,
+            .recipe img {
+                height: 180px;
+            }
+        }
+        
+        /* Dropdown en móviles */
+        @media (max-width: 768px) {
             .dropdown-content {
                 position: static;
                 box-shadow: none;
                 background-color: transparent;
+                display: none;
             }
             
             .dropdown-content a {
                 color: white;
-                padding: 8px 0;
+                padding: 10px 0;
                 border-bottom: none;
+                font-size: 1rem;
+                padding-left: 20px;
             }
             
             .dropdown-content a:hover {
                 background-color: transparent;
-                color: #aed6f1;
+                color: #ff9800;
             }
-
-            .developer-name {
-                font-size: 0.7rem;
+            
+            .dropdown.active .dropdown-content {
+                display: block;
             }
         }
     </style>
@@ -631,7 +879,6 @@
             <div class="header-content">
                 <div class="logo">
                     <div class="logo-img">
-                        <!-- Escudo de la Unidad Educativa -->
                         <img src="https://i.ibb.co/PzxPTRkZ/logo-colegio.jpg" alt="Escudo Unidad Educativa Antofagasta">
                     </div>
                     <div class="logo-text">
@@ -640,7 +887,9 @@
                         <div class="developer-name">Desarrollado por: Matias Sebastian Rivero Camata</div>
                     </div>
                 </div>
-                <nav>
+                
+                <!-- Navegación Desktop -->
+                <nav class="desktop-nav">
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
                         <li class="dropdown">
@@ -674,10 +923,30 @@
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
                 </nav>
+                
+                <!-- Botón Menú Hamburguesa -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
             </div>
         </div>
     </header>
 
+    <!-- Navegación Móvil -->
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="close-menu" id="closeMenu">✕</button>
+        <ul>
+            <li><a href="#inicio" onclick="closeMobileMenu()">Inicio</a></li>
+            <li><a href="#acerca" onclick="closeMobileMenu()">Acerca</a></li>
+            <li><a href="#grupos" onclick="closeMobileMenu()">Grupos de Alimentos</a></li>
+            <li><a href="#consejos" onclick="closeMobileMenu()">Consejos</a></li>
+            <li><a href="#recetas" onclick="closeMobileMenu()">Recetas</a></li>
+            <li><a href="#beneficios" onclick="closeMobileMenu()">Beneficios</a></li>
+            <li><a href="#galeria" onclick="closeMobileMenu()">Galería</a></li>
+            <li><a href="#contacto" onclick="closeMobileMenu()">Contacto</a></li>
+            <li><a href="#qr" onclick="closeMobileMenu()">Compartir</a></li>
+        </ul>
+    </nav>
+
+    <!-- El resto de tu contenido HTML permanece exactamente igual -->
     <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="container">
@@ -1190,6 +1459,36 @@
                     });
                 }
             });
+        });
+
+        // Menú móvil
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMenu = document.getElementById('closeMenu');
+
+        function openMobileMenu() {
+            mobileNav.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        closeMenu.addEventListener('click', closeMobileMenu);
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Cerrar menú al hacer clic fuera
+        mobileNav.addEventListener('click', function(e) {
+            if (e.target === mobileNav) {
+                closeMobileMenu();
+            }
         });
     </script>
 </body>
